@@ -20,7 +20,6 @@ coastalr_reproj <- st_transform(coastalr, crs(dunesinegi))
 
 # Cut dunes with coastal regions polygons.
 for (i in 1:nrow(coastalr_reproj)){
-  i=1
   coastr_poly <- buffer(vect(coastalr_reproj[i,]), width=10000) #10km
   dinegi_cropped <- extend(crop(dunesinegi, coastr_poly), coastr_poly)
   dinegi_disagg <- disagg(dinegi_cropped, fact=5)
